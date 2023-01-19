@@ -12,3 +12,7 @@ def concept(request):
 
 def location(request):
     return render(request,"hello/location.html")
+
+class BlogList(ListView):
+    template_name = "list.html"
+    model = BlogModel
