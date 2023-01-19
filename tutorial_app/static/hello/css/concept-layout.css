@@ -1,0 +1,20 @@
+/* @charset "utf-8";
+/* レイアウトのためのCSS */
+
+body{
+    font-family: 'Sawarabi Gothic', sans-serif;
+	color: #000;
+	font-size:1rem;
+	line-height:1.85;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-text-size-adjust: 100%; 
+	word-wrap: break-word;    
+    text-align: center;
+    background-color: #99ffcc;
+}
+
+hr{
+    margin: 10px 100px;
+}
+
