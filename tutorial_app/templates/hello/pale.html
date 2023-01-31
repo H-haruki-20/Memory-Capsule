@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8' />
+<title>地理院地図VectorのベクトルタイルをMapbox GL JSで表示するサンプル</title>
+<meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+{% load static %}
+<script src='{% static "hello/js/mapbox-gl.js" %}'></script>
+<link href='{% static "hello/css/mapbox-gl.css" %}' rel='stylesheet' />
+<style>
+body { margin:0; padding:0; }
+#map {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+}
+</style>
+</head>
+<body>
+ 
+<div id='map'></div>    
+
+
+<script>
+// GPS センサの値が変化したら何らか実行する geolocation.watchPosition メソッド
+navigator.geolocation.watchPosition( (position) => {
+    var lat  = position.coords.latitude;            // 緯度を取得
+    var lng  = position.coords.longitude;           // 経度を取得
+    var accu = position.coords.accuracy;            // 緯度・経度の精度を取得
+    displayMap(lat,lng);
+}, (error) => {                                     // エラー処理（今回は特に何もしない）
+}, {
+    enableHighAccuracy: true                        // 高精度で測定するオプション
+});
+
+function displayMap(lat,lng){
+    var map = new mapboxgl.Map({
+    container: 'map',
+    hash: true,
+    style: '{% static "hello/js/pale.json" %}', //style.jsonへのパス
+    center: [lng, lat],  
+    zoom: 15,
+    maxZoom: 100,
+    minZoom: 4,
+    localIdeographFontFamily: false
+    //  localIdeographFontFamily: ['MS Gothic', 'Hiragino Kaku Gothic Pro', 'sans-serif']
+    });
+
+
+    map.addControl(new mapboxgl.NavigationControl(), 'bottom-right');
+    map.addControl(new mapboxgl.ScaleControl() ); 
+}
+
+</script>
+ 
+</body>
+</html>

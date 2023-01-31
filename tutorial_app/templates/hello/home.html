@@ -1,19 +1,19 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="ja">
- 
+
 <head>
     <meta charset="UTF-8" />
- 
+
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link rel="stylesheet" href="{% static 'hello/css/location.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/index.css' %}" />
     <!-- google login css-->
     <link rel="stylesheet" href="{% static 'css/google.css' %}" />
     <title>Django Social Auth</title>
 </head>
- 
+
 <body>
     <div class="container-fluid">
         <div>
@@ -23,8 +23,7 @@
                     <div class="col-sm-12 mb-3">
                         <h4 class="text-center text-black">ようこそ{{ user.first_name }}さん！</h4>
                     </div>
-                    <div id="txt"></h4>
- 
+
                     <div class="row">
                         <div class="col-md-8 mx-auto my-2 order-md-1">
                             <button class="login-with-google-btn">
@@ -36,28 +35,5 @@
             </div>
         </div>
     </div>
-    <div id="txt">ここにデータを表示</div>     
-
-
- 
-<script>
-// GPS センサの値が変化したら何らか実行する geolocation.watchPosition メソッド
-navigator.geolocation.watchPosition( (position) => {
-    var lat  = position.coords.latitude;            // 緯度を取得
-    var lng  = position.coords.longitude;           // 経度を取得
-    var accu = position.coords.accuracy;            // 緯度・経度の精度を取得
-    displayData(lat, lng, accu);                    // displayData 関数を実行
-}, (error) => {                                     // エラー処理（今回は特に何もしない）
-}, {
-    enableHighAccuracy: true                        // 高精度で測定するオプション
-});
- 
-// データを表示する displayData 関数
-function displayData(lat, lng, accu) {
-    var txt = document.getElementById("txt");       // データを表示するdiv要素の取得
-    txt.innerHTML = "緯度, 経度: " + lat + ", " + lng + "<br>"  // データ表示
-                  + "精度: "       + accu;
-}
-</script>
 </body>
 </html>
